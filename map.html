@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>美食地图 · I人的馋嘴日记</title>
+  <meta name="description" content="马来西亚美食足迹地图。每篇小红书笔记对应一个标点。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="page-map">
+
+<header class="site-bar">
+  <div class="site-logo">I人<span>的馋嘴日记</span></div>
+  <nav class="site-nav">
+    <a href="index.html">关于</a>
+    <a href="map.html" class="active">美食地图</a>
+  </nav>
+</header>
+
+<!-- 左侧列表面板 -->
+<aside id="post-panel" class="post-panel" aria-label="食记列表">
+  <div class="panel-head">
+    <h2 class="serif">食记足迹</h2>
+  </div>
+  <div id="post-list" class="panel-list"></div>
+</aside>
+
+<!-- 地图 -->
+<div id="map" role="application" aria-label="马来西亚美食地图"></div>
+
+<!-- 浮动工具栏 -->
+<div class="map-toolbar">
+  <span id="map-stat" class="map-stat">加载中…</span>
+  <div class="filter-pills">
+    <button type="button" class="filter-pill active" data-filter="all">全部</button>
+    <button type="button" class="filter-pill" data-filter="hawker">路边摊</button>
+    <button type="button" class="filter-pill" data-filter="kopitiam">茶室</button>
+    <button type="button" class="filter-pill" data-filter="cafe">Cafe</button>
+    <button type="button" class="filter-pill" data-filter="restaurant">餐厅</button>
+  </div>
+  <button type="button" id="btn-list" class="btn-list-toggle">列表</button>
+</div>
+
+<!-- 详情抽屉 -->
+<aside id="detail-sheet" class="detail-sheet" aria-label="食记详情">
+  <button type="button" id="sheet-close" class="sheet-close" aria-label="关闭">×</button>
+  <div class="sheet-handle"></div>
+  <span id="detail-tag" class="post-tag"></span>
+  <h2 id="detail-title" class="serif"></h2>
+  <p id="detail-loc" class="detail-loc"></p>
+  <p id="detail-price" class="detail-price"></p>
+  <p id="detail-body" class="detail-body"></p>
+  <div id="detail-tip" class="detail-tip" hidden>
+    <strong>I人贴士</strong>
+    <span class="tip-text"></span>
+  </div>
+  <a id="detail-xhs" class="detail-link" href="#" target="_blank" rel="noopener">在小红书看完整笔记 →</a>
+</aside>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/map.js"></script>
+</body>
+</html>
