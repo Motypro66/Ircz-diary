@@ -13,14 +13,13 @@
 <body class="page-map">
 
 <header class="site-bar">
-  <div class="site-logo">I人<span>的馋嘴日记</span></div>
+  <a href="index.html" class="site-logo site-logo-link" data-site-name>I人<span>的馋嘴日记</span></a>
   <nav class="site-nav">
-    <a href="index.html">关于</a>
+    <a href="index.html">首页</a>
     <a href="map.html" class="active">美食地图</a>
   </nav>
 </header>
 
-<!-- 左侧列表面板 -->
 <aside id="post-panel" class="post-panel" aria-label="食记列表">
   <div class="panel-head">
     <h2 class="serif">食记足迹</h2>
@@ -28,10 +27,8 @@
   <div id="post-list" class="panel-list"></div>
 </aside>
 
-<!-- 地图 -->
 <div id="map" role="application" aria-label="马来西亚美食地图"></div>
 
-<!-- 浮动工具栏 -->
 <div class="map-toolbar">
   <span id="map-stat" class="map-stat">加载中…</span>
   <div class="filter-pills">
@@ -44,10 +41,10 @@
   <button type="button" id="btn-list" class="btn-list-toggle">列表</button>
 </div>
 
-<!-- 详情抽屉 -->
 <aside id="detail-sheet" class="detail-sheet" aria-label="食记详情">
   <button type="button" id="sheet-close" class="sheet-close" aria-label="关闭">×</button>
   <div class="sheet-handle"></div>
+  <span id="detail-demo-badge" class="demo-badge" hidden>测试帖</span>
   <span id="detail-tag" class="post-tag"></span>
   <h2 id="detail-title" class="serif"></h2>
   <p id="detail-loc" class="detail-loc"></p>
@@ -57,9 +54,15 @@
     <strong>I人贴士</strong>
     <span class="tip-text"></span>
   </div>
-  <a id="detail-xhs" class="detail-link" href="#" target="_blank" rel="noopener">在小红书看完整笔记 →</a>
+  <div class="detail-actions">
+    <a id="detail-xhs" class="detail-btn secondary" href="#" target="_blank" rel="noopener noreferrer" hidden>
+      阅读原文（小红书外链）→
+    </a>
+    <p class="detail-actions-note">地图与档案在本站；完整图文在小红书 App</p>
+  </div>
 </aside>
 
+<script src="js/site-config.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/map.js"></script>
 </body>

@@ -1,0 +1,9 @@
+# Netlify 静态站：发布整个仓库根目录
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"

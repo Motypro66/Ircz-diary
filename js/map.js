@@ -14,11 +14,25 @@ let activeId = null;
 async function loadPosts() {
   try {
     const res = await fetch("data/posts.json");
-    if (!res.ok) throw new Error("posts.json not found");
+    if (!res.ok) throw new Error(`posts.json HTTP ${res.status}`);
     POSTS = await res.json();
   } catch (e) {
     console.warn("Could not load posts.json:", e);
     POSTS = [];
+    const list = document.getElementById("post-list");
+    if (list) {
+      list.innerHTML = `
+        <div class="panel-empty">
+          <div class="emoji">⚠️</div>
+          <p><strong>数据文件未找到</strong></p>
+          <p style="margin-top:0.5rem;font-size:12px;line-height:1.6">
+            请确认部署时包含整个文件夹：<br>
+            <code>data/posts.json</code>、<code>css/</code>、<code>js/</code>
+          </p>
+        </div>`;
+    }
+    const stat = document.getElementById("map-stat");
+    if (stat) stat.textContent = "数据加载失败";
   }
 }
 
@@ -151,6 +165,15 @@ function showDetail(post) {
   const sheet = document.getElementById("detail-sheet");
   if (!sheet) return;
 
+  const tagEl = document.getElementById("detail-tag");
+  if (tagEl) {
+    tagEl.className = `post-tag tag-${post.category}`;
+    tagEl.textContent = TAG_LABELS[post.category] || post.category;
+  }
+
+  const demoBadge = document.getElementById("detail-demo-badge");
+  if (demoBadge) demoBadge.hidden = !post.isDemo;
+
   document.getElementById("detail-title").textContent = post.title;
   document.getElementById("detail-loc").textContent = post.location;
   document.getElementById("detail-price").textContent = post.price;
@@ -166,11 +189,17 @@ function showDetail(post) {
   }
 
   const link = document.getElementById("detail-xhs");
-  if (post.xhsLink) {
-    link.href = post.xhsLink;
-    link.hidden = false;
-  } else {
-    link.hidden = true;
+  if (link) {
+    if (post.xhsLink) {
+      link.href = post.xhsLink;
+      link.hidden = false;
+      link.textContent = post.isDemo
+        ? "查看参考原帖（小红书外链，非本账号）→"
+        : "阅读原文（小红书）→";
+    } else {
+      link.hidden = true;
+      link.removeAttribute("href");
+    }
   }
 
   sheet.classList.add("open");
@@ -229,10 +258,25 @@ function setupUI() {
 window.selectPost = selectPost;
 window.filterPosts = filterPosts;
 
+function openPostFromQuery() {
+  const id = new URLSearchParams(window.location.search).get("id");
+  if (id) selectPost(id);
+}
+
+function applySiteBranding() {
+  const cfg = window.SITE;
+  if (!cfg) return;
+  document.querySelectorAll("[data-site-name]").forEach((el) => {
+    el.innerHTML = `${cfg.nameAccent}<span>的馋嘴日记</span>`;
+  });
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
+  applySiteBranding();
   await loadPosts();
   if (document.getElementById("map")) {
     initMap();
     setupUI();
+    openPostFromQuery();
   }
 });

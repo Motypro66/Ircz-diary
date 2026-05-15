@@ -12,23 +12,51 @@
 <body class="page-home">
 
 <header class="site-bar">
-  <div class="site-logo">I人<span>的馋嘴日记</span></div>
+  <a href="index.html" class="site-logo site-logo-link" data-site-name>I人<span>的馋嘴日记</span></a>
   <nav class="site-nav">
-    <a href="index.html" class="active">关于</a>
+    <a href="index.html" class="active">首页</a>
     <a href="map.html">美食地图</a>
   </nav>
 </header>
 
 <main>
-  <section class="hero">
-    <p class="hero-badge">MALAYSIA · 安静探店</p>
-    <h1 class="serif">不说话，<em>认真记每一口</em></h1>
-    <p class="hero-lead">
-      我是内向的馋嘴人。不喊麦、不硬夸，只记录真实味道、价钱，
-      和「一个人去吃也舒服」的小贴士。
-    </p>
-    <a class="hero-cta" href="map.html">打开美食地图 →</a>
-    <p class="hero-note">已发小红书笔记的店，会标在地图上</p>
+  <section class="hero hero-rich">
+    <div class="hero-inner">
+      <p class="hero-badge">MALAYSIA · 安静探店</p>
+      <h1 class="serif">不说话，<em>认真记每一口</em></h1>
+      <p class="hero-lead">
+        真实味道、清楚价钱、I人也能舒服吃的店。
+        小红书看故事，这里用地图收藏足迹。
+      </p>
+      <div class="hero-actions">
+        <a class="hero-cta" href="map.html">打开美食地图</a>
+        <a class="hero-cta secondary" id="home-xhs-btn" href="#" target="_blank" rel="noopener noreferrer" hidden>关注小红书</a>
+      </div>
+      <p class="hero-note" id="home-xhs-hint">已发笔记的店会标在地图上</p>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-num" id="stat-posts">—</span>
+        <span class="stat-label">篇食记</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num" id="stat-regions">—</span>
+        <span class="stat-label">个地区</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">I人</span>
+        <span class="stat-label">友好贴士</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-recent">
+    <div class="section-head">
+      <h2 class="serif">最新足迹</h2>
+      <a href="map.html" class="section-link">在地图上看全部 →</a>
+    </div>
+    <div id="recent-posts" class="recent-grid">加载中…</div>
   </section>
 
   <section class="section">
@@ -36,7 +64,7 @@
     <div class="pillar-grid">
       <article class="pillar">
         <strong>🗺️ 足迹地图</strong>
-        <p>全马来西亚地图，点一下看食记摘要、价钱、I人贴士。</p>
+        <p>马来西亚地图标点，点一下看摘要、价钱、I人贴士。</p>
       </article>
       <article class="pillar">
         <strong>💰 真实价钱</strong>
@@ -44,27 +72,22 @@
       </article>
       <article class="pillar">
         <strong>🧘 I人友好</strong>
-        <p>人少时段、单人座位、要不要排队——这些我会写。</p>
+        <p>人少时段、单人座位、要不要排队。</p>
       </article>
       <article class="pillar">
         <strong>📕 小红书同步</strong>
-        <p>完整图文在小红书；这里是方便收藏的地图档案。</p>
+        <p>完整图文在小红书；这里是地图档案库。</p>
       </article>
     </div>
-  </section>
-
-  <section class="section">
-    <h2 class="serif">小红书</h2>
-    <p style="font-size:14px;color:var(--ink-muted)">
-      搜索 <strong>I人的馋嘴日记</strong> 关注最新探店。
-      （账号链接准备好后可补在这里。）
-    </p>
   </section>
 </main>
 
 <footer class="site-footer">
-  <p>I人的馋嘴日记 · 马来西亚美食地图</p>
+  <p><a href="index.html" class="footer-home">I人的馋嘴日记</a> · 马来西亚美食地图</p>
+  <p class="footer-sub">网站档案库 · 完整探店图文请见小红书</p>
 </footer>
 
+<script src="js/site-config.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>
